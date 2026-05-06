@@ -1,0 +1,57 @@
+[
+	{
+		"name": "ANSA",
+		"url": "https://www.ansa.it/sito/ansait_rss.xml",
+		"category": "general"
+	},
+	{
+		"name": "La Repubblica",
+		"url": "https://www.repubblica.it/rss/homepage/rss2.0.xml",
+		"category": "general"
+	},
+	{
+		"name": "Corriere della Sera",
+		"url": "https://xml2.corriereobjects.it/rss/homepage.xml",
+		"category": "general"
+	},
+	{
+		"name": "Sole 24 Ore - Italia",
+		"url": "https://www.ilsole24ore.com/rss/italia.xml",
+		"category": "general"
+	},
+	{
+		"name": "Sole 24 Ore - Economia",
+		"url": "https://www.ilsole24ore.com/rss/economia.xml",
+		"category": "economy"
+	},
+	{
+		"name": "Sole 24 Ore - Mondo",
+		"url": "https://www.ilsole24ore.com/rss/mondo.xml",
+		"category": "general"
+	},
+	{
+		"name": "Sole 24 Ore - Tecnologia",
+		"url": "https://www.ilsole24ore.com/rss/tecnologia.xml",
+		"category": "tech"
+	},
+	{
+		"name": "Radiocor - In Borsa",
+		"url": "https://www.ilsole24ore.com/rss/radiocor--in-borsa.xml",
+		"category": "economy"
+	},
+	{
+		"name": "Rai News",
+		"url": "https://www.rainews.it/rss/tutti",
+		"category": "general"
+	},
+	{
+		"name": "Sky TG24",
+		"url": "https://tg24.sky.it/rss/tg24.xml",
+		"category": "general"
+	},
+	{
+		"name": "Adnkronos",
+		"url": "https://www.adnkronos.com/RSS_Topnews.xml",
+		"category": "general"
+	}
+]

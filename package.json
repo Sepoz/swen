@@ -1,0 +1,36 @@
+{
+	"name": "swen",
+	"version": "0.1.0",
+	"description": "Terminal UI for browsing the main Italian news outlets via RSS.",
+	"bin": {
+		"swen": "./dist/cli.js"
+	},
+	"type": "module",
+	"scripts": {
+		"build": "tsc",
+		"dev": "tsx src/cli.tsx",
+		"start": "node dist/cli.js",
+		"lint": "oxlint",
+		"lint:fix": "oxlint --fix",
+		"fmt": "oxfmt",
+		"fmt:check": "oxfmt --check",
+		"check": "npm run lint && npm run fmt:check && tsc --noEmit"
+	},
+	"dependencies": {
+		"ink": "^7.0.2",
+		"meow": "^14.0.0",
+		"react": "^19.1.0",
+		"rss-parser": "^3.13.0"
+	},
+	"devDependencies": {
+		"@types/node": "^24.0.0",
+		"@types/react": "^19.1.0",
+		"oxfmt": "^0.48.0",
+		"oxlint": "^1.63.0",
+		"tsx": "^4.20.0",
+		"typescript": "^5.7.0"
+	},
+	"engines": {
+		"node": ">=24"
+	}
+}
