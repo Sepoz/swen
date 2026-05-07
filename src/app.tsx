@@ -256,6 +256,25 @@ export default function App({ config, limit }: Props) {
 		if (view.kind === "detail") {
 			if (key.escape || input === "h" || key.leftArrow) {
 				setView({ kind: "list" });
+				return;
+			}
+			if (key.downArrow || input === "j") {
+				const next = Math.min(cursor + 1, Math.max(0, items.length - 1));
+				const item = items[next];
+				if (item) {
+					setCursor(next);
+					setView({ kind: "detail", itemId: item.id });
+				}
+				return;
+			}
+			if (key.upArrow || input === "k") {
+				const prev = Math.max(cursor - 1, 0);
+				const item = items[prev];
+				if (item) {
+					setCursor(prev);
+					setView({ kind: "detail", itemId: item.id });
+				}
+				return;
 			}
 			return;
 		}
@@ -337,7 +356,10 @@ export default function App({ config, limit }: Props) {
 					subtitle={loading ? "refreshing…" : `viewing — ${selected.feedName}`}
 				/>
 				<Detail item={selected} />
-				<Footer hints="o open in browser · esc/← back · q quit" warnings={warnings} />
+				<Footer
+					hints="↑↓/jk prev/next · o open in browser · esc/← back · q quit"
+					warnings={warnings}
+				/>
 			</Box>
 		);
 	}
