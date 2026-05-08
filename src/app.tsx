@@ -105,9 +105,9 @@ function GradientTitle({ text }: { text: string }) {
 	);
 }
 
-function OutletBadge({ name }: { name: string }) {
+function OutletBadge({ name, inverse }: { name: string; inverse?: boolean }) {
 	return (
-		<Text color={outletColor(name)} bold>
+		<Text color={outletColor(name)} bold inverse={inverse}>
 			{name}
 		</Text>
 	);
@@ -434,35 +434,37 @@ function Row({
 	selected: boolean;
 	outletWidth: number;
 }) {
+	const catColor = categoryColor(item.category);
 	return (
 		<Box>
-			<Box width={2}>
-				<Text color="cyan" bold>
-					{selected ? "▌" : " "}
-				</Text>
+			<Box width={1}>
+				<Text color={catColor}>▌</Text>
 			</Box>
-			<Box width={2}>
-				<Text color={selected ? "cyanBright" : "cyan"}>{selected ? "❯" : " "}</Text>
+			<Box width={3}>
+				<Text inverse={selected}>{selected ? " ❯ " : "   "}</Text>
 			</Box>
 			<Box width={outletWidth}>
-				<OutletBadge name={truncate(item.feedName, outletWidth - 1)} />
+				<OutletBadge name={truncate(item.feedName, outletWidth - 1)} inverse={selected} />
 			</Box>
 			<Box flexGrow={1} marginLeft={1}>
-				<Text dimColor={!selected} bold={selected}>
+				<Text dimColor={!selected} bold={selected} inverse={selected}>
 					{truncate(item.title, 90)}
 				</Text>
 			</Box>
 			<Box width={6} justifyContent="flex-end">
-				<Text dimColor>{formatRelative(item.pubDate)}</Text>
+				<Text dimColor={!selected} inverse={selected}>
+					{formatRelative(item.pubDate)}
+				</Text>
 			</Box>
 		</Box>
 	);
 }
 
 function Detail({ item }: { item: NewsItem }) {
+	const catColor = categoryColor(item.category);
 	return (
 		<Box flexDirection="column" marginTop={1}>
-			<Box borderStyle="round" borderColor="cyan" paddingX={2} paddingY={0} flexDirection="column">
+			<Box borderStyle="round" borderColor={catColor} paddingX={2} paddingY={0} flexDirection="column">
 				<Box>
 					<OutletBadge name={item.feedName} />
 					<Text dimColor>{"  ·  "}</Text>
@@ -477,22 +479,19 @@ function Detail({ item }: { item: NewsItem }) {
 					)}
 				</Box>
 				<Box marginTop={1}>
-					<Text bold>{item.title}</Text>
+					<Text bold color={catColor}>
+						{item.title}
+					</Text>
 				</Box>
 			</Box>
 
-			<Box marginTop={1} paddingX={2}>
-				<Text bold color="magenta">
-					◆ Articolo
-				</Text>
-			</Box>
 			<Box
-				marginTop={0}
+				marginTop={1}
 				marginX={2}
-				borderStyle="single"
-				borderColor="gray"
+				borderLeft
+				borderColor={catColor}
 				borderDimColor
-				paddingX={1}
+				paddingLeft={2}
 				paddingY={0}
 			>
 				{item.content || item.summary ? (
@@ -504,8 +503,8 @@ function Detail({ item }: { item: NewsItem }) {
 				)}
 			</Box>
 
-			<Box marginTop={1} paddingX={2}>
-				<Text dimColor>Link:{"  "}</Text>
+			<Box marginTop={1} paddingX={4}>
+				<Text dimColor>▸ </Text>
 				<Text color="blue" underline>
 					{item.link || "—"}
 				</Text>
